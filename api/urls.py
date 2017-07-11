@@ -4,6 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from api.api_view import project
 from api.api_view import library
 from api.api_view import project_library
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     url(r'^api/libraries/$', library.get_libraries),
@@ -23,6 +24,8 @@ urlpatterns = [
     url(r'^api/project_libraries/new', project_library.create_project_library),
     url(r'^api/project_libraries/(?P<pk>[0-9]+)/update', project_library.update_project_library),
     url(r'^api/project_libraries/(?P<pk>[0-9]+)/delete/', project_library.delete_project_library),
+
+    url(r'^api/docs/', include_docs_urls(title='Project Management API'))
 
 ]
 

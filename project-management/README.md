@@ -1,28 +1,13 @@
-# ProjectManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+## Project Management 
+Project Management is A simple Application used for managing projects.
+It is a written in Angular2 with Python/Django and Django REST Framework back-end.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## How to Run
+1.Clone this repository (https://github.com/chriscode824/interview_test)
+2. Open CMD/terminal and go to root project directory/project-management.
+3. Install NPM
+npm install
+4. Run The Application
+npm start
+5. Open browser and open URL:localhost:4200/projects
