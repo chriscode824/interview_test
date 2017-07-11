@@ -1,0 +1,57 @@
+<div class="container">
+  <form class="form-horizontal" role="form" [formGroup]="projectForm" novalidate>
+    <h2>Project Details</h2>
+    <div class="form-group">
+      <label for="text" class="col-sm-3 control-label">Active Start Date</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="active_start_date" id="active_start_date" placeholder="Active Start Date"
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="active_end_date" class="col-sm-3 control-label">Active End Date</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="active_end_date" id="active_end_date" placeholder="Active End Date"
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="client_name" class="col-sm-3 control-label">Client Name</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="client_name" placeholder="Client Name" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-3 control-label">Description</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="description" id="description" placeholder="Description"
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="git_url" class="col-sm-3 control-label">Git URL</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="git_url" id="git_url" placeholder="Git URL" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="testing_url" class="col-sm-3 control-label">Testing URL</label>
+      <div class="col-sm-9">
+        <input type="email" formControlName="testing_url" id="testing_url" placeholder="Testing URL"
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="production_url" class="col-sm-3 control-label">Production URL</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="production_url" id="production_url" placeholder="Production URL"
+               class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <button type="submit" (click)="addProject(project)" class="btn btn-primary btn-block">Save</button>
+      </div>
+    </div>
+  </form> <!-- /form -->
+</div> <!-- ./container -->
