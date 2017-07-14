@@ -18,7 +18,8 @@
           <th>Git URL</th>
           <th>Testing URL</th>
           <th>Production URL</th>
-          <th>Delete</th>
+          <th>Details</th>
+          <th>Edit</th>
           <th>Delete</th>
           </thead>
           <tbody>
@@ -32,9 +33,15 @@
             <td>{{ project.git_url }}</td>
             <td>{{ project.testing_url }}</td>
             <td>{{ project.production_url }}</td>
+              <td>
+              <p data-placement="top" data-toggle="tooltip" title="Edit">
+                <button [routerLink]="['/projects/', project.id ]" class="btn btn-primary btn-xs"><span
+                  class="glyphicon glyphicon-info-sign"></span></button>
+              </p>
+            </td>
             <td>
               <p data-placement="top" data-toggle="tooltip" title="Edit">
-                <button (click)="selectProject(project)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span
+                <button [routerLink]="['/projects/', project.id, 'edit']" class="btn btn-primary btn-xs"><span
                   class="glyphicon glyphicon-pencil"></span></button>
               </p>
             </td>
@@ -46,8 +53,6 @@
               </p>
             </td>
           </tr>
-
-
           </tbody>
         </table>
         <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

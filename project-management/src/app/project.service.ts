@@ -12,9 +12,17 @@ export class ProjectService {
 
   constructor(private http: Http) { }
 
+  getProject(id: number): Promise<Project> {
+    const url = `${this.baseUrl}${id}/${this.jsonFormat}`;
+    console.log(url);
+    return this.http.get(url)
+    
+    .toPromise()
+    .then(response => response.json() as Project)
+    .catch(this.handleError)
+  }
+
   getProjects(): Promise<Project[]> {
-   // let headers = new Headers( {'Content-Type': 'application/json' });
-  //  let options = new RequestOptions(headers);
     const url = `${this.baseUrl}${this.jsonFormat}`;
     return this.http.get(url)
     .toPromise()
@@ -28,7 +36,15 @@ export class ProjectService {
      console.log(body);
     return this.http.post(url, body)
     .toPromise()
-    //.then(response => response.json() as Project)
+    .catch(this.handleError)
+  }
+
+  updateProject(project: Project): any{
+    const url = `${this.baseUrl}${project.id}/update`;
+    var body = JSON.stringify(project);
+    console.log(body);
+    return this.http.post(url, body)
+    .toPromise()
     .catch(this.handleError)
   }
 
@@ -38,7 +54,7 @@ export class ProjectService {
     .toPromise()
     .catch(this.handleError)
   }
-
+  
   private handleError(error: any): Promise<any> {
   console.error('An error occurred', error);
   return Promise.reject(error.message || error);

@@ -45,11 +45,8 @@ def update_project_library(request, pk):
     project_library = ProjectLibrary.objects.get(pk=pk)
     data = JSONParser().parse(request)
     library_serializer = ProjectLibrarySerializer(instance=project_library, data=data)
-    if library_serializer.is_valid():
-        library_serializer.save()
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-    else:
-        return HttpResponse(library_serializer.errors)
+    library_serializer.is_valid(raise_exception=True)
+    library_serializer.save()
 
 
 @api_view(['GET'])

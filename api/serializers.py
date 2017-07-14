@@ -7,17 +7,16 @@ from api.models import ProjectLibrary
 class LibrarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Library
-        fields = ['library', 'version_number']
+        fields = ['description', 'active_start_date', 'active_end_date',]
 
 
 class ProjectLibrarySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectLibrary
-        fields = ['library', 'project']
+        fields = ['library', 'project', 'version_number']
 
 
 class ProjectLibrariesSerializer(serializers.ModelSerializer):
-    version_number = serializers.CharField(source='library.version_number')
     class Meta:
         model = ProjectLibrary
         fields = ['library', 'version_number']

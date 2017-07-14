@@ -1,3 +1,6 @@
+
+import { Library } from './library.models';
+
 export class Project {
     id: number;
     active_start_date : Date;
@@ -7,4 +10,5 @@ export class Project {
     git_url : String;
     testing_url : String;
     production_url : String;
+    libraries: Library[];
 }

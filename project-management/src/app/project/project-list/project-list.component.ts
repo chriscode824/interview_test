@@ -23,22 +23,16 @@ export class ProjectListComponent implements OnInit {
   }
  
   selectProject(project: Project): void {
-   console.log(project.id);
-   this.project = project
-}
+    this.project = project
+  }
 
  deleteProject(project: Project): void {
-   console.log(project.id);
-
   this.projectService
     .deleteProject(project.id)
     .then(() => {
       this.project = null;
       this.getProjects();
      });
-
-     
-}
-
+ }
 
 }

@@ -4,19 +4,12 @@ from django.db import models
 
 
 class Library(models.Model):
-    DJANGO = 'DJ'
-    TWITTER_BOOTSTRAP = 'TW'
-    JQUERY = 'JQ'
-    LIBRARY_CHOICES = (
-        (DJANGO, 'Django'),
-        (TWITTER_BOOTSTRAP, 'Twitter Bootstrap'),
-        (JQUERY, 'JQuery'),
-    )
-    library = models.CharField(max_length=45, choices=LIBRARY_CHOICES, unique=True)
-    version_number = models.CharField(max_length=10)
+    description = models.CharField(max_length=45, unique=True)
+    active_start_date = models.DateField()
+    active_end_date = models.DateField()
 
     def __str__(self):
-        return self.library
+        return self.description
 
 
 class Project(models.Model):
@@ -35,5 +28,6 @@ class Project(models.Model):
 class ProjectLibrary(models.Model):
     project = models.ForeignKey(Project, related_name='libraries')
     library = models.ForeignKey(Library, related_name='project_library')
+    version_number = models.CharField(max_length=10)
     class Meta:
         unique_together = (("project", "library"),)

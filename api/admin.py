@@ -7,8 +7,8 @@ from api.models import ProjectLibrary
 
 @admin.register(Library)
 class LibraryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'library', 'version_number']
-    fields = ('library', 'version_number')
+    list_display = ['id','description', 'active_start_date', 'active_end_date']
+    fields = ('description', 'active_start_date', 'active_end_date')
 
 
 @admin.register(Project)
@@ -19,5 +19,5 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(ProjectLibrary)
 class ProjectLibraryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'project', 'library']
-    fields = ('project', 'library')
+    list_display = ['id', 'project', 'library', 'version_number']
+    fields = ('project', 'library', 'version_number')
