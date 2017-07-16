@@ -11,54 +11,58 @@
         var primePromise;
 
         var service = {
-            getAvengersCast: getAvengersCast,
-            getAvengerCount: getAvengerCount,
-            getAvengers: getAvengers,
+            getProjects: getProjects,
+            getProject: getProject,
+            addProject:addProject,
+            updateProject:updateProject,
             ready: ready
         };
 
         return service;
 
-        function getAvengers() {
-            return $http.get('/api/maa')
-                .then(getAvengersComplete)
+        function getProjects() {
+            return $http.get('http://localhost:8000/api/projects/?format=json')
+                .then(getProjectsComplete)
                 .catch(function(message) {
                     exception.catcher('XHR Failed for getAvengers')(message);
                     $location.url('/');
                 });
-
-            function getAvengersComplete(data, status, headers, config) {
-                return data.data[0].data.results;
+            function getProjectsComplete(data, status, headers, config) {
+                return data.data;
             }
         }
 
-        function getAvengerCount() {
-            var count = 0;
-            return getAvengersCast()
-                .then(getAvengersCastComplete)
-                .catch(exception.catcher('XHR Failed for getAvengerCount'));
-
-            function getAvengersCastComplete (data) {
-                count = data.length;
-                return $q.when(count);
+        function getProject(project_id) {
+            return $http.get('http://localhost:8000/api/projects/' + project_id + '/?format=json')
+                .then(getProject)
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for getAvengers')(message);
+                    $location.url('/');
+                });
+            function getProject(data, status, headers, config) {
+                return data.data;
             }
         }
 
-        function getAvengersCast() {
-            var cast = [
-                {name: 'Robert Downey Jr.', character: 'Tony Stark / Iron Man'},
-                {name: 'Chris Hemsworth', character: 'Thor'},
-                {name: 'Chris Evans', character: 'Steve Rogers / Captain America'},
-                {name: 'Mark Ruffalo', character: 'Bruce Banner / The Hulk'},
-                {name: 'Scarlett Johansson', character: 'Natasha Romanoff / Black Widow'},
-                {name: 'Jeremy Renner', character: 'Clint Barton / Hawkeye'},
-                {name: 'Gwyneth Paltrow', character: 'Pepper Potts'},
-                {name: 'Samuel L. Jackson', character: 'Nick Fury'},
-                {name: 'Paul Bettany', character: 'Jarvis'},
-                {name: 'Tom Hiddleston', character: 'Loki'},
-                {name: 'Clark Gregg', character: 'Agent Phil Coulson'}
-            ];
-            return $q.when(cast);
+        function addProject(project) {
+            var url = 'http://localhost:8000/api/projects/new';
+            return $http.post(url, project)
+                .then()
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for addProject')(message);
+                    $location.url('/');
+                });
+        }
+
+        function updateProject(project) {
+            console.log("Project id:" + project.id)
+            var url = 'http://localhost:8000/api/projects/' + project.id + '/update';
+            return $http.post(url, project)
+                .then()
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for addProject')(message);
+                    $location.url('/');
+                });
         }
 
         function prime() {
@@ -66,7 +70,6 @@
             if (primePromise) {
                 return primePromise;
             }
-
             primePromise = $q.when(true).then(success);
             return primePromise;
 
@@ -78,11 +81,10 @@
 
         function ready(nextPromises) {
             var readyPromise = primePromise || prime();
-
             return readyPromise
                 .then(function() { return $q.all(nextPromises); })
                 .catch(exception.catcher('"ready" function failed'));
         }
-
+    
     }
 })();

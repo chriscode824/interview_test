@@ -20,8 +20,7 @@
         /*
          * Feature areas
          */
-        'app.avengers',
-        'app.dashboard',
+        'app.projects',
         'app.layout'
     ]);
 

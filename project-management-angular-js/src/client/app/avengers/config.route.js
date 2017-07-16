@@ -26,6 +26,20 @@
                         content: '<i class="fa fa-lock"></i> Avengers'
                     }
                 }
+            },
+
+             {
+                url: '/avengers/id',
+                config: {
+                    templateUrl: 'app/avengers/avengers.html',
+                    controller: 'Avengers',
+                    controllerAs: 'vm',
+                    title: 'avengers',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-lock"></i> Avengers'
+                    }
+                }
             }
         ];
     }

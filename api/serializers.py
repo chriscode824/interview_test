@@ -17,6 +17,7 @@ class ProjectLibrarySerializer(serializers.ModelSerializer):
 
 
 class ProjectLibrariesSerializer(serializers.ModelSerializer):
+    library = serializers.CharField11
     class Meta:
         model = ProjectLibrary
         fields = ['library', 'version_number']

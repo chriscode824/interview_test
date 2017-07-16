@@ -6,7 +6,9 @@
         .provider('routehelperConfig', routehelperConfig)
         .factory('routehelper', routehelper);
 
-    routehelper.$inject = ['$location', '$rootScope', '$route', 'logger', 'routehelperConfig'];
+    routehelper.$inject = ['$location', '$rootScope', '$route', 'logger', 'routehelperConfig', '$routeParams'];
+
+
 
     // Must configure via the routehelperConfigProvider
     function routehelperConfig() {
@@ -25,7 +27,7 @@
         };
     }
 
-    function routehelper($location, $rootScope, $route, logger, routehelperConfig) {
+    function routehelper($location, $rootScope, $route, logger, routehelperConfig, $routeParams) {
         var handlingRouteChangeError = false;
         var routeCounts = {
             errors: 0,
@@ -37,13 +39,18 @@
         var service = {
             configureRoutes: configureRoutes,
             getRoutes: getRoutes,
-            routeCounts: routeCounts
+            routeCounts: routeCounts,
+            redirect:redirect
         };
 
         init();
 
         return service;
         ///////////////
+
+       function redirect(location) {
+            $location.path(location);
+       }
 
         function configureRoutes(routes) {
             routes.forEach(function(route) {
